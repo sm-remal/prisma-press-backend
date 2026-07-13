@@ -1,13 +1,14 @@
 // server
 
 import app from "./app";
+import config from "./config";
 
-const port = process.env.PORT || 5000;
+const port = config.port;
 
 const main = async () => {
     try {
 
-        await prisma.$connect();
+        // await prisma.$connect();
         console.log(`Prima Connect to the database successfully`);
 
         app.listen(port, () => {
@@ -15,7 +16,7 @@ const main = async () => {
         })
     } catch (error) {
         console.log(`Error Starting The Server ${error}`)
-        await prisma.$disconnect();
+        // await prisma.$disconnect();
         process.exit(1);
     }
 }
